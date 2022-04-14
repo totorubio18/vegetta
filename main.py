@@ -50,7 +50,7 @@ def uploadFile(filename,currentBits,totalBits,speed,time,args):
 
 def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jdb=None):
     try:
-        bot.editMessageText(message,'🤜Preparando Para Subir☄1�7...')
+        bot.editMessageText(message,'🤜Preparando Para Subir☁...')
         evidence = None
         fileid = None
         user_info = jdb.get_user(update.message.sender.username)
@@ -96,9 +96,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
                           if user_info['uploadtype'] == 'blog':
                              fileid,resp = client.upload_file_blog(f,progressfunc=uploadFile,args=(bot,message,originalfile,thread),tokenize=tokenize)
                              draftlist.append(resp)
-                             client = draftlist
-                          iter += 1
-                          if iter>=10:
+                             client = draftlist                if iter>=10:
                               break
                     os.unlink(f)
                 if user_info['uploadtype'] == 'evidence':
@@ -293,7 +291,7 @@ def onmessage(update,bot:ObigramClient):
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /banuser username❄1�7')
             else:
-                bot.sendMessage(updatso❄1�7')
+                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❄1�7')
             return
         if '/getdb' in msgText:
             isadmin = jdb.is_admin(username)
@@ -386,7 +384,7 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❄1�7')
             return
-        if '/tokenize_off' in msgText:
+        if '/tokenize_o
             try:
                 getUser = user_info
                 if getUser:
@@ -542,7 +540,7 @@ def onmessage(update,bot:ObigramClient):
                 # set in debug
             #    api_id = 7386053
             #    api_hash = '78d1c032f3aa546ff5176d9ff0e7f341'
-            #    bot_token = '5126279164:AAHktfD2MDrhwALNDYYRVqtbFCViIN1PFQI'
+            #    bot_token = '5124841893:AAH30p6ljtIzi2oPlaZwBmCfWQ1KelC6KUg'
 
             #    chat_id = int(update.message.chat.id)
             #    message_id = int(update.message.message_id)
@@ -558,7 +556,7 @@ def main():
     bot_token = os.environ.get('bot_token')
 
     #set in debug
-    bot_token = '5126279164:AAHktfD2MDrhwALNDYYRVqtbFCViIN1PFQI'
+    bot_token =    ''5126279164:AAHktfD2MDrhwALNDYYRVqtbFCViIN1PFQI"
 
     bot = ObigramClient(bot_token)
     bot.onMessage(onmessage)
