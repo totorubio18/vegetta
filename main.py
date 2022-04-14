@@ -96,7 +96,9 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
                           if user_info['uploadtype'] == 'blog':
                              fileid,resp = client.upload_file_blog(f,progressfunc=uploadFile,args=(bot,message,originalfile,thread),tokenize=tokenize)
                              draftlist.append(resp)
-                             client = draftlist                if iter>=10:
+                             client = draftlist
+                          iter += 1
+                          if iter>=10:
                               break
                     os.unlink(f)
                 if user_info['uploadtype'] == 'evidence':
@@ -105,12 +107,12 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
                     except:pass
                 return client
             else:
-                bot.editMessageText(message,'❌Error En La Pagina❄1�7')
+                bot.editMessageText(message,'❌Error En La Pagina❌')
         elif cloudtype == 'cloud':
             tokenize = False
             if user_info['tokenize']!=0:
                tokenize = True
-            bot.editMessageText(message,'🤜Subiendo ☄1�7 Espere Mientras... 😄')
+            bot.editMessageText(message,'🤜Subiendo ☁ Espere Mientras... 😄')
             host = user_info['moodle_host']
             user = user_info['moodle_user']
             passw = user_info['moodle_password']
@@ -129,7 +131,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
                return filesdata
         return None
     except Exception as ex:
-        bot.editMessageText(message,'❌Error En La Pagina❄1�7')
+        bot.editMessageText(message,'❌Error En La Pagina❌')
 
 
 def processFile(update,bot,message,file,thread=None,jdb=None):
@@ -187,8 +189,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
         if len(files)>0:
             txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
             sendTxt(txtname,files,update,bot)
-    else:
-        bot.editMessageText(message,'❌Error En La Pagina❄1�7')
+ t(message,'❌Error En La Pagina❄1�7')
 
 def ddl(update,bot,message,url,file_name='',thread=None,jdb=None):
     downloader = Downloader()
@@ -382,9 +383,8 @@ def onmessage(update,bot:ObigramClient):
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
                     bot.sendMessage(update.message.chat.id,statInfo)
             except:
-                bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❄1�7')
-            return
-        if '/tokenize_o
+                bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state�  return
+        if '/tokenize_off' in msgText:
             try:
                 getUser = user_info
                 if getUser:
@@ -556,7 +556,7 @@ def main():
     bot_token = os.environ.get('bot_token')
 
     #set in debug
-    bot_token =    ''5126279164:AAHktfD2MDrhwALNDYYRVqtbFCViIN1PFQI"
+    bot_token = '5126279164:AAHktfD2MDrhwALNDYYRVqtbFCViIN1PFQI'
 
     bot = ObigramClient(bot_token)
     bot.onMessage(onmessage)
